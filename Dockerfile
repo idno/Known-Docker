@@ -37,7 +37,7 @@ RUN { \
 RUN pecl install APCu-4.0.10 \
  && docker-php-ext-enable apcu
 
-ENV KNOWN_VERSION 0.9.0.2
+ENV KNOWN_VERSION 0.9.0.4
 VOLUME /var/www/html
 
 RUN curl -o known.zip -SL http://assets.withknown.com/releases/known-${KNOWN_VERSION}.zip \
@@ -46,14 +46,6 @@ RUN curl -o known.zip -SL http://assets.withknown.com/releases/known-${KNOWN_VER
  && unzip known.zip -d /usr/src/known/ \
  && rm known.zip* \
  && cd /usr/src/known/IdnoPlugins \
- && curl -L https://github.com/idno/Twitter/archive/master.zip -o twitter.zip \
- && unzip twitter.zip \
- && mv Twitter-master/ Twitter \
- && rm twitter.zip \
- && curl -L https://github.com/idno/Facebook/archive/master.zip -o facebook.zip \
- && unzip facebook.zip \
- && mv Facebook-master/ Facebook \
- && rm facebook.zip \
  && curl -L https://github.com/idno/Markdown/archive/master.zip -o markdown.zip \
  && unzip markdown.zip \
  && mv Markdown-master/ Markdown \
