@@ -1,10 +1,6 @@
-# Known
+#Known: social publishing for groups and individuals
 
-A single site for the content you create
-
-Known is a simple, social publishing platform for groups and individuals. Publish on your own site, share everywhere.
-
-![logo](https://withknown.com/img/logo_beta.png)
+![Known - A social publishing platform for groups and individuals](https://withknown.com/img/home/screens.png)
 
 # How to use this image
 
@@ -28,7 +24,7 @@ You can use a setup that is used in production at [IndieHosters/known](https://g
 
 ## Installation
 
-Once started, you'll arrive at the configuration wizzard.
+Once started, you'll arrive at the configuration wizard.
 Follow the steps as indicated.
 
 ## Contribute
