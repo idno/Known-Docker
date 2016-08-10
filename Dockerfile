@@ -40,8 +40,8 @@ RUN pecl install APCu-4.0.10 \
 ENV KNOWN_VERSION 0.9.2
 VOLUME /var/www/html
 
-RUN curl -o known.zip -SL http://assets.withknown.com/releases/known-${KNOWN_VERSION}.zip \
- && curl -o known.zip.sig -SL http://assets.withknown.com/releases/known-${KNOWN_VERSION}.zip.sig \
+RUN curl -o known.zip -fSL http://assets.withknown.com/releases/known-${KNOWN_VERSION}.zip \
+ && curl -o known.zip.sig -fSL http://assets.withknown.com/releases/known-${KNOWN_VERSION}.zip.sig \
  && gpg --verify known.zip.sig \
  && unzip known.zip -d /usr/src/known/ \
  && rm known.zip*
