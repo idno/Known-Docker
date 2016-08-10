@@ -44,16 +44,7 @@ RUN curl -o known.zip -SL http://assets.withknown.com/releases/known-${KNOWN_VER
  && curl -o known.zip.sig -SL http://assets.withknown.com/releases/known-${KNOWN_VERSION}.zip.sig \
  && gpg --verify known.zip.sig \
  && unzip known.zip -d /usr/src/known/ \
- && rm known.zip* \
- && cd /usr/src/known/IdnoPlugins \
- && curl -L https://github.com/idno/Markdown/archive/master.zip -o markdown.zip \
- && unzip markdown.zip \
- && mv Markdown-master/ Markdown \
- && rm markdown.zip \
- && curl -L https://github.com/pierreozoux/KnownAppNet/archive/master.zip -o app-net.zip \
- && unzip app-net.zip \
- && mv KnownAppNet-master AppNet \
- && rm app-net.zip 
+ && rm known.zip*
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
