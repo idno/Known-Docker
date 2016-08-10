@@ -42,7 +42,7 @@ VOLUME /var/www/html
 
 RUN curl -o known.zip -fSL http://assets.withknown.com/releases/known-${KNOWN_VERSION}.zip \
  && curl -o known.zip.sig -fSL http://assets.withknown.com/releases/known-${KNOWN_VERSION}.zip.sig \
- && gpg --verify known.zip.sig \
+ && gpg --batch --verify known.zip.sig known.zip \
  && unzip known.zip -d /usr/src/known/ \
  && rm known.zip*
 
