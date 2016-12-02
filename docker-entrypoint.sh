@@ -42,16 +42,16 @@ if [ "$1" == php-fpm ]; then
   if [[ $DB_CONNECTABLE -eq 1 ]]; then
     DB_EXISTS=$(mysql -u${KNOWN_DB_USER} -p${KNOWN_DB_PASSWORD} -h${KNOWN_DB_HOST} -e "SHOW DATABASES LIKE '"${KNOWN_DB_NAME}"';" 2>&1 | grep ${KNOWN_DB_NAME} > /dev/null ; echo "$?")
 
-    if [[ DB_EXISTS -eq 1 ]]; then
+    if [[ $DB_EXISTS -eq 1 ]]; then
       echo "=> Creating database ${KNOWN_DB_NAME}"
       RET=$(mysql -u${KNOWN_DB_USER} -p${KNOWN_DB_PASSWORD} -h${KNOWN_DB_HOST} -e "CREATE DATABASE ${KNOWN_DB_NAME}")
-      if [[ RET -ne 0 ]]; then
+      if [[ $RET -ne 0 ]]; then
         echo >&2 'Cannot create database.'
         exit $RET
       fi
       echo "=> Loading initial database data to ${KNOWN_DB_NAME}"
       RET=$(mysql -u${KNOWN_DB_USER} -p${KNOWN_DB_PASSWORD} -h${KNOWN_DB_HOST} ${KNOWN_DB_NAME} < /var/www/html/schemas/mysql/mysql.sql)
-      if [[ RET -ne 0 ]]; then
+      if [[ $RET -ne 0 ]]; then
         echo >&2 'Cannot load initial database data for known'
         exit $RET
       fi
