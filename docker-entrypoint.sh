@@ -49,16 +49,20 @@ if [ "$1" == php-fpm ]; then
         echo >&2 'Cannot create database.'
         exit $RET
       fi
+    else
+      echo '=> Skipped creation of database for known, it already exists.'
+    fi
+    DB_INITIATED=$(mysql -u${KNOWN_DB_USER} -p${KNOWN_DB_PASSWORD} -h${KNOWN_DB_HOST} -e "USE '"${KNOWN_DB_NAME}"';SHOW TABLES;" 2>&1 | grep config > /dev/null ; echo "$?")
+
+    if [[ $DB_INITIATED -eq 1 ]]; then
       echo "=> Loading initial database data to ${KNOWN_DB_NAME}"
       RET=$(mysql -u${KNOWN_DB_USER} -p${KNOWN_DB_PASSWORD} -h${KNOWN_DB_HOST} ${KNOWN_DB_NAME} < /var/www/html/schemas/mysql/mysql.sql)
       if [[ $RET -ne 0 ]]; then
         echo >&2 'Cannot load initial database data for known'
         exit $RET
       fi
-      echo '=> Done!'
-    else
-      echo '=> Skipped creation of database for known, it already exists.'
     fi
+    echo '=> Done!'
   else
     echo >&2 'Cannot connect to Mysql. Starting anyway...'
   fi
