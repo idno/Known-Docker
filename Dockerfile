@@ -37,7 +37,7 @@ RUN { \
 RUN pecl install APCu-4.0.10 \
  && docker-php-ext-enable apcu
 
-ENV KNOWN_VERSION 0.9.2
+ENV KNOWN_VERSION 0.9.9
 VOLUME /var/www/html
 
 RUN curl -o known.zip -fSL http://assets.withknown.com/releases/known-${KNOWN_VERSION}.zip \
