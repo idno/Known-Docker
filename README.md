@@ -1,4 +1,4 @@
-#Known: social publishing for groups and individuals
+# Known: social publishing for groups and individuals
 
 ![Known - A social publishing platform for groups and individuals](https://withknown.com/img/home/screens.png)
 
